@@ -7,12 +7,16 @@ USER root
 WORKDIR /opt/jboss/keycloak/themes/
 
 RUN mkdir -p labsai/login/
-RUN cp -a keycloak/common labsai
 COPY labsai/login/ labsai/login
 
+RUN mkdir -p labsai/account/
+COPY labsai/account/ labsai/account
+
 RUN mkdir -p newbly/login/
-RUN cp -a keycloak/common newbly
 COPY newbly/login/ newbly/login
+
+RUN mkdir -p newbly/account/
+COPY newbly/account/ newbly/account
 
 ENTRYPOINT [ "/opt/jboss/tools/docker-entrypoint.sh" ]
 
